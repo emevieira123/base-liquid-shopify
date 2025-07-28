@@ -1,11 +1,298 @@
-<div id="error"></div>
+<div class="error-404">
+  <div class="error-container">
+    <div class="error-number">
+      <span class="digit">4</span>
+      <span class="digit">0</span>
+      <span class="digit">4</span>
+    </div>
+    
+    <div class="error-icon">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="50" stroke="#189DC0" stroke-width="4" fill="none" class="error-circle"/>
+        <path d="M40 40 L80 80 M80 40 L40 80" stroke="#189DC0" stroke-width="4" stroke-linecap="round" class="error-x"/>
+      </svg>
+    </div>
+    
+    <div class="error-content">
+      <h1 class="error-title">Página não encontrada</h1>
+      <p class="error-description">
+        Ops! Parece que você se perdeu no universo dos jogos. 
+        A página que você está procurando não existe ou foi movida.
+      </p>
+      
+      <div class="error-actions">
+        <a href="/" class="btn-primary" id="home-button">
+          <span>Voltar ao Início</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 3L17 10L10 17M17 10H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="error-decoration">
+      <div class="floating-element element-1"></div>
+      <div class="floating-element element-2"></div>
+      <div class="floating-element element-3"></div>
+    </div>
+  </div>
+</div>
 
 <style>
-#error {
+.error-404 {
+  min-height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+  overflow: hidden;
 }
-@media screen and (max-width: 1000px) {
 
+.error-container {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.error-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 120px;
+  font-weight: 900;
+  color: #189DC0;
+  text-shadow: 0 0 30px rgba(24, 157, 192, 0.5);
+}
+
+.digit {
+  display: inline-block;
+  animation: bounceIn 0.8s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+.digit:nth-child(1) { animation-delay: 0.1s; }
+.digit:nth-child(2) { animation-delay: 0.2s; }
+.digit:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.error-icon {
+  margin-bottom: 30px;
+}
+
+.error-circle {
+  animation: pulse 2s infinite;
+}
+
+.error-x {
+  animation: drawX 1s ease-out 0.5s forwards;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes drawX {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.error-content {
+  margin-bottom: 40px;
+}
+
+.error-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-family: var(--bold);
+}
+
+.error-description {
+  font-size: 18px;
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-family: var(--regular);
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  font-family: var(--bold);
+  background: linear-gradient(135deg, #189DC0, #0f7a8a);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(24, 157, 192, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(24, 157, 192, 0.4);
+}
+
+.error-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #189DC0, #0f7a8a);
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.element-1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  width: 60px;
+  height: 60px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.element-3 {
+  width: 80px;
+  height: 80px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .error-number {
+    font-size: 80px;
+  }
+  
+  .error-title {
+    font-size: 24px;
+  }
+  
+  .error-description {
+    font-size: 16px;
+  }
+  
+  .error-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .error-number {
+    font-size: 60px;
+  }
+  
+  .error-title {
+    font-size: 20px;
+  }
+  
+  .error-description {
+    font-size: 14px;
+  }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const elements = document.querySelectorAll('.error-title, .error-description, .error-actions');
+  
+  elements.forEach((element, index) => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    
+    setTimeout(() => {
+      element.style.transition = 'all 0.8s ease-out';
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+    }, 1000 + (index * 200));
+  });
+  
+  const homeButton = document.getElementById('home-button');
+  
+  homeButton.addEventListener('click', function(e) {
+    localStorage.setItem('activeMenuItem', '/');
+    
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      item.classList.remove('menu-item-active');
+    });
+    
+    const inicioItem = document.querySelector('a[href="/"]');
+    if (inicioItem) {
+      inicioItem.classList.add('menu-item-active');
+    }
+  });
+});
+</script>
 
